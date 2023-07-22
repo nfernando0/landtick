@@ -1,0 +1,11 @@
+.bg-gray {
+  background-color: #ddd;
+}
+
+.btnBayar {
+  background: linear-gradient(180deg, #ec7ab7 0%, #ec7a7a 100%);
+  border: none;
+  width: 80%;
+  margin-left: 3rem;
+  margin-top: 1rem;
+}

@@ -1,0 +1,101 @@
+@import url("https://fonts.cdnfonts.com/css/avenir");
+@import url("https://fonts.cdnfonts.com/css/opticon");
+
+.hero {
+  background: linear-gradient(90deg, #ec7ab7 2.34%, #ec7a7a 107.48%);
+  height: 20rem;
+}
+
+.hero .img {
+  margin-top: 25px;
+}
+.hero .img-1 {
+  z-index: 10;
+}
+.hero .img-2 {
+  z-index: 9;
+  top: 13px;
+  left: 30px;
+}
+.hero h1 {
+  margin-top: 60px;
+}
+.hero h1,
+p {
+  font-family: "Avenir", sans-serif;
+}
+.hero p {
+  margin-top: 1px;
+  letter-spacing: 0.1rem;
+  font-size: 1.2rem;
+}
+.tiketComp {
+  position: relative;
+  z-index: 99;
+  /* margin-top: -200px; */
+}
+.card-tix {
+  margin-top: 15rem !important;
+}
+.harga {
+  color: #ec7a7a;
+}
+.tiket {
+  width: 70%;
+  margin: auto;
+  top: -280px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: #fff;
+  /* height: 10rem; */
+  border: 1px solid #ddd;
+  /* height: 236px; */
+  border-radius: 5px;
+}
+
+.tiketComp h1 {
+  font-family: "Avenir", sans-serif;
+  font-size: 24px;
+}
+
+.right {
+  height: 236px;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+.booktix {
+  background-color: #fff;
+}
+
+.footer {
+  background: linear-gradient(90deg, #ec7ab7 0%, #ec7a7a 100%);
+}
+.righttix {
+  background: linear-gradient(90deg, #ec7ab7 0%, #ec7a7a 100%);
+  border-bottom-left-radius: 100%;
+  width: 15rem;
+}
+.righttix img {
+  padding-bottom: 20px;
+}
+.righttix .rightic {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.righttix h4 {
+  font-family: "opticon", sans-serif;
+  font-size: 1.5rem;
+}
+.btn-cari {
+  margin-top: 2.1rem;
+  margin-left: 2.1rem;
+  padding: 0.2rem 1.5rem;
+  background: linear-gradient(90deg, #ec7ab7 -0.6%, #ec7a7a 100%);
+}
+
+.option {
+  margin-left: 1 0px !important;
+}

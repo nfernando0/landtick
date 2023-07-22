@@ -1,0 +1,91 @@
+@import url("https://fonts.cdnfonts.com/css/opticon");
+
+.card span {
+  font-family: "Opticon", sans-serif;
+  font-size: 10px;
+  padding-left: 10px;
+}
+.card {
+  width: 80%;
+  margin: auto;
+}
+.card-payment {
+  width: 90%;
+}
+.img img {
+  margin-bottom: 10px !important;
+  margin-top: -6px;
+}
+
+.approved {
+  background-color: green;
+  padding: 0.5rem;
+  height: 50px;
+  color: #000;
+  opacity: 0.5;
+  border-radius: 1rem;
+}
+.tables {
+  width: 70%;
+}
+.card .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightblue;
+  width: 7.2rem;
+  border-bottom-right-radius: 100%;
+  right: 0;
+}
+.card h4 {
+  display: flex;
+  position: absolute;
+  right: 10px;
+}
+.pending {
+  background-color: #f7941e;
+  height: 2rem;
+  padding: 0.2rem 0.9rem;
+  opacity: 0.5;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background-color: #f7941e;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+}
+.line {
+  margin-left: 9.8rem;
+  margin-top: -50px;
+}
+
+.circles {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  border: 1px solid #f7941e;
+}
+
+.top {
+  margin-left: 2.4rem;
+}
+.lines {
+  border: 1px solid #d0d0d0;
+  width: 60%;
+}
+.kereta {
+  position: absolute;
+  right: 0;
+}
+.btn-bayar {
+  background: linear-gradient(90deg, #ec7ab7 -0.6%, #ec7a7a 100%);
+  margin-top: -55px;
+  width: 29%;
+  margin-right: 5px;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  border: none;
+}

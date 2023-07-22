@@ -1,0 +1,38 @@
+@import url("https://fonts.cdnfonts.com/css/opticon");
+.navComp .btn-pink {
+  background-color: #ec7ab7;
+  color: white;
+  width: 80px;
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.navComp span {
+  font-family: "Opticon", sans-serif;
+  color: #ec7ab7;
+  font-size: 1.5rem;
+}
+
+.navComp .navbar {
+  /* background-color: red !important; */
+  padding-top: 0.1rem;
+  padding-bottom: 0;
+}
+.navComp .btn {
+  width: 112px;
+}
+
+.navComp .btn-daftar:hover {
+  border: 1px solid #ec7ab7;
+}
+
+.btn-pink {
+  border-radius: 50px;
+  background: linear-gradient(180deg, #ec7ab7 0%, #ec7a7a 100%);
+  border: none;
+}
+
+a.menu:after,
+.dropdown-toggle:after {
+  content: none;
+}
