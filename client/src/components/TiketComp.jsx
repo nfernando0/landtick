@@ -61,20 +61,13 @@ const TiketComp = (props) => {
 
     let { data: rawTickets, refetch } = useQuery(["filteredCache", filterStatus], async () => {
         const response = filterStatus ? (
-            await API.get(`/ticket/?start_station_id=${filter.startStation}&destination_station_id=${filter.DestinationStation}`)
+            await API.get(`/ticket/?start_station_id=${startStation}&destination_id=${DestinationStation}`)
         ) : (
             await API.get(`/tickets`));
         console.log("ini log filter", response.data.data);
         return response.data.data;
     });
 
-    const handleReset = () => {
-        setFilterStatus(false);
-        setfilter({
-            startStation: "",
-            DestinationStation: "",
-        })
-    }
 
     useEffect(() =>
         setTicket(rawTickets)

@@ -79,6 +79,7 @@ function App() {
             </Route>
             <Route element={<PrivateRoute />}>
               <Route exact path="/tiket/:id" element={<TiketSaya />} />
+              <Route exact path="/tiket" element={<TiketSaya />} />
               <Route exact path="/payment/:id" element={<Payment />} />
               <Route exact path="/tiketSuccess" element={<TiketSuccess />} />
             </Route>

@@ -46,7 +46,7 @@ function PaymentComp(props) {
 
     useEffect(() => {
         const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
-        const myMidtransClientKey = "SB-Mid-client-6b2c1a3c6e5b7f5d";
+        const myMidtransClientKey = process.env.REACT_APP_MIDTRANS_CLIENT_KEY;  
 
 
         let scriptTag = document.createElement("script")
