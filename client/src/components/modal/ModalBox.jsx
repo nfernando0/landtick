@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { useMutation } from 'react-query'
-import { API } from '../../config/API'
 
 function ModalBox({ show, handleClose, setDel }) {
 

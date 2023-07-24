@@ -1,8 +1,8 @@
 import React from 'react'
 import { Modal, Table } from 'react-bootstrap'
-import { API } from '../../config/API';
 import { useQuery } from 'react-query';
 import { FormatRupiah } from '@arismun/format-rupiah';
+import { API } from '../../config/api';
 
 function ModalInvoice(props) {
 
