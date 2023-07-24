@@ -14,7 +14,7 @@ function ComponentsCard() {
     let { data: stations } = useQuery('StationsCache', async () => {
         const response = await API.get('/stations');
         // console.log("Test  ", response.data.data)
-        // return response.data.data
+        return response.data.data
     })
 
 
@@ -34,7 +34,7 @@ function ComponentsCard() {
 
     return (
         <>
-            <TiketComp />
+            <TiketComp startStation={start_station_id} DestinationStation={destination_id} />
 
         </>
     )
