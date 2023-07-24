@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Button, Card, Col, Container, Row, Table } from 'react-bootstrap'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { API } from '../config/API';
 import { useMutation, useQuery } from 'react-query';
 import { FormatRupiah } from '@arismun/format-rupiah';
+import { API } from './config/api';
 
 
 function PaymentComp(props) {

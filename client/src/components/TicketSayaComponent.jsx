@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, Table } from 'react-bootstrap';
 import { useQuery } from 'react-query'
-import { API } from '../config/API';
 import { Link } from 'react-router-dom';
+import { API } from './config/api';
 
 function TicketSayaComponent(props) {
 

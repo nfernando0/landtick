@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../config/API'
+import { API } from './config/api'
 
 function AddStationComponent() {
 

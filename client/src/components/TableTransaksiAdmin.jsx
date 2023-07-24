@@ -6,7 +6,7 @@ import ModalEdit from './modal/ModalEdit';
 import ModalInvoice from './modal/ModalInvoice';
 import { useMutation, useQuery } from 'react-query';
 import { Tickets } from './datas/Ticket';
-import { API } from '../config/API';
+import { API } from './config/api';
 
 function TableTransaksiAdmin() {
 

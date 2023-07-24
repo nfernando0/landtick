@@ -3,10 +3,9 @@ import '../assets/css/Hero.css'
 import { Form, Link, Navigate, useNavigate } from 'react-router-dom'
 
 import TiketComp from './TiketComp'
-// import { API, getApi, setAuthToken } from '../config/API'
-import { API, getApi, setAuthToken } from '../config/API'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useQuery } from 'react-query'
+import { API } from './config/api'
 
 
 function ComponentsCard() {

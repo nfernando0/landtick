@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal } from 'react-bootstrap';
 import { useMutation } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
-import { API } from '../config/API';
+import { API } from './config/api';
 
 function ModalComponent(props) {
     const handleClose = () => showModal(false)

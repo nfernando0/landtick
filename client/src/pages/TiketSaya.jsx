@@ -7,9 +7,9 @@ import { Button, Container, Table } from 'react-bootstrap'
 import FooterComp from '../components/FooterComp'
 import ButtonComp from '../components/ButtonComp'
 import { useQuery } from 'react-query'
-import { API } from '../config/API'
 import { FormatRupiah } from '@arismun/format-rupiah'
 import TicketSayaComponent from '../components/TicketSayaComponent'
+import { API } from '../components/config/api'
 
 
 

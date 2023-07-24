@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import { Modal, Button, Form, Alert, Container, Row, Col } from 'react-bootstrap'
 import { useMutation } from 'react-query';
-import { API } from '../../config/API';
+import { API } from '../../components/config/api';
 
 const Register = ({ show, onHide }) => {
   const [form, setForm] = useState({

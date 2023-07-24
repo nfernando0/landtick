@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { useMutation, useQuery } from 'react-query'
-import { API } from '../config/API';
 import { useNavigate } from 'react-router-dom';
+import { API } from './config/api';
 
 function AddTicketComponent() {
     let { data: stations } = useQuery('StationsCache', async () => {

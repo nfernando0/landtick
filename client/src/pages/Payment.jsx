@@ -3,8 +3,8 @@ import NavbarComp from '../components/NavbarComp'
 import { Col, Container, Row } from 'react-bootstrap'
 import PaymentComp from '../components/PaymentComp'
 import { useQuery } from 'react-query'
-import { API } from '../config/API'
 import { useParams } from 'react-router-dom'
+import { API } from '../components/config/api'
 
 function Payment() {
 

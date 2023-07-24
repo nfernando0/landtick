@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../assets/css/Hero.css'
 import { Container, Row, Col, Form, FormControl, Button, Modal } from 'react-bootstrap'
-import { API, getApi, setAuthToken } from '../config/API';
 import { useQuery } from 'react-query';
 import { UserContext } from '../Context/UserContext';
 import Login from '../pages/Auth/Login';
 import { Link } from 'react-router-dom';
 import ModalComponent from './ModalComponent';
 import ListTicket from './ListTicket';
+import { API } from './config/api';
 
 
 const TiketComp = (props) => {
@@ -148,7 +148,7 @@ const TiketComp = (props) => {
                                     </Col>
                                     <Col >
                                         {/* <Button className="mt-4 grad" onClick={handleReset}>Reset Filter</Button> */}
-                                        <Button className="mt-4 grad" onClick={() => { setFilterStatus(true); refetch() }}>Cari Ticket</Button>
+                                        <Button className="mt-4" onClick={() => { setFilterStatus(true); refetch() }}>Cari Ticket</Button>
                                     </Col>
                                 </Row>
                             </Col>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Register from './Register';
 import { UserContext } from '../../Context/UserContext';
 import { useMutation } from 'react-query';
-import { API, setAuthToken } from '../../config/API';
+import { API, setAuthToken } from '../../components/config/api';
 
 function Login({ show, onHide }) {
 
