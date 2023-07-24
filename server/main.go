@@ -4,7 +4,6 @@ import (
 	"landtick/database"
 	"landtick/pkg/mysql"
 	"landtick/routes"
-	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -25,9 +24,8 @@ func main() {
 	mysql.DatabaseInit()
 	database.RunMigration()
 
-	var PORT = os.Getenv("PORT")
 
 	routes.RouteInit(e.Group("/api/v1"))
 	e.Static("/uploads", "./uploads")
-	e.Logger.Fatal(e.Start(":" + PORT))
+	e.Logger.Fatal(e.Start(":5000"))
 }

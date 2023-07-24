@@ -61,7 +61,7 @@ const TiketComp = (props) => {
 
     let { data: rawTickets, refetch } = useQuery(["filteredCache", filterStatus], async () => {
         const response = filterStatus ? (
-            await API.get(`/ticket/?start_station_id=${startStation}&destination_id=${DestinationStation}`)
+            await API.get(`/ticket?start_station_id=${startStation}&destination_id=${DestinationStation}`)
         ) : (
             await API.get(`/tickets`));
         console.log("ini log filter", response.data.data);
@@ -173,7 +173,7 @@ const TiketComp = (props) => {
                         <ListTicket items={ticket} />
                     </div>
                 )) : tickets?.length === 0 ? (
-                    <h1 className="text-center my-5">Ticket tidak ditemukan</h1>
+                    <h1 className="text-center my-5">Ticket tidak ada</h1>
                 ) : (tickets?.map((ticket) =>
                     <div key={ticket.id} onClick={state.isLogin ? (() => { setPrice(ticket.price); setTiketSelected(ticket.id); handleShowSuccess() }) : (handleShowLogin)} style={{ cursor: "pointer" }}>
                         <ListTicket items={ticket} />

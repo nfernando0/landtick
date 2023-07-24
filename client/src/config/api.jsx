@@ -2,11 +2,11 @@ import axios from 'axios';
 
 // Create base URL API
 export const API = axios.create({
-    baseURL: process.env.REACT_APP_BASEURL,
+    baseURL: 'http://localhost:5000/api/v1/',
 });
 
 export function getApi() {
-    console.log("ini base url", proces.env.REACT_APP_BASEURL);
+    console.log("ini base url", "http://localhost:5000/api/v1/")
 }
 
 
