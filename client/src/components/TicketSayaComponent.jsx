@@ -16,7 +16,7 @@ function TicketSayaComponent(props) {
 
     return (
         <div>
-            <div className="card position-relative mb-4">
+            <div className="card position-relative mb-4" style={{ position: "relative" }}>
                 <div className='d-flex align-items-center img'>
                     {/* <img src="../src/assets/img/right.png" alt="" /> */}
                 </div>
@@ -82,7 +82,13 @@ function TicketSayaComponent(props) {
                             </tr>
                         </tbody>
                     </Table>
-                    <Link to={`/payment/${props?.id}`} type='submit' className="btn float-end btn-bayar text-white">Bayar Sekarang</Link>
+                    {props.status !== "pending" ? (
+                        <span style={{ marginLeft: "860px", top: "100px", position: "absolute" }}>
+                            <img src="../src/assets/img/barcode.png" alt="" />
+                        </span>
+                    ) : (
+                        <Link to={`/payment/${props?.id}`} type='submit' className="btn float-end btn-bayar text-white">Bayar Sekarang</Link>
+                    )}
                 </div>
             </div>
         </div >

@@ -17,7 +17,7 @@ function TiketSaya() {
 
     let { data: myTransactions } = useQuery("myTransactionsCaches", async () => {
         const response = await API.get("/transactionUser");
-        console.log("data", response)
+        console.log("data", response.data.data)
         return response.data.data
     })
 
@@ -28,7 +28,7 @@ function TiketSaya() {
             <Container>
                 <h1 className='my-5'>Tiket Saya</h1>
                 {myTransactions?.map((transaction, index) => (
-                    <TicketSayaComponent id={transaction?.id} kota={transaction?.ticket?.start_station?.kota} key={index} status={transaction?.status} nama={transaction?.ticket?.train_name} berangkat={transaction?.ticket?.start_time} awal={transaction?.ticket?.start_date} station={transaction?.ticket?.start_station?.name} akhir={transaction?.ticket?.destination?.name} kelas={transaction?.ticket?.train_type} kotaAkhir={transaction?.ticket?.destination?.kota} tiba={transaction?.ticket?.arrival_time} harga={FormatRupiah(transaction?.ticket?.price)} />
+                    <TicketSayaComponent key={index} id={transaction?.id} kota={transaction?.ticket?.start_station?.kota} status={transaction?.status} nama={transaction?.ticket?.train_name} berangkat={transaction?.ticket?.start_time} awal={transaction?.ticket?.start_date} station={transaction?.ticket?.start_station?.name} akhir={transaction?.ticket?.destination?.name} kelas={transaction?.ticket?.train_type} kotaAkhir={transaction?.ticket?.destination?.kota} tiba={transaction?.ticket?.arrival_time} harga={FormatRupiah(transaction?.ticket?.price)} />
                 ))}
             </Container>
             <FooterComp />

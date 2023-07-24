@@ -16,6 +16,7 @@ import AddTicket from './pages/AddTicket'
 import { API, setAuthToken } from './config/API'
 import FooterComp from './components/FooterComp'
 import { useMutation } from 'react-query'
+import AddStation from './pages/AddStation'
 
 
 
@@ -32,7 +33,6 @@ function App() {
 
       let payload = response.data.data;
       payload.token = localStorage.token;
-      console.log("payload", payload);
 
       dispatch({
         type: "USER_SUCCESS",
@@ -72,6 +72,8 @@ function App() {
             <Route exact path="/" element={<HeroComp />} />
             <Route element={<PrivateRouteAdmin />}>
               <Route exact path="/addTicket" element={<AddTicket />} />
+              <Route exact path='/dashboard' element={<AdminHome />} />
+              <Route exact path='/station' element={<AddStation />} />
               <Route exact path="/admin" element={<AdminHome />} />
               <Route exact path="/transaksi" element={<TransaksiList />} />
             </Route>

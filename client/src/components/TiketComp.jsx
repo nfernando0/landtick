@@ -17,6 +17,7 @@ const TiketComp = (props) => {
     const [showSuccess, setShowSuccess] = useState(false);
     const handleCloseSuccess = () => { setShowSuccess(false) }
     const handleShowSuccess = () => { setShowSuccess(true) }
+    const [filterStatus, setFilterStatus] = useState(false);
 
     const [showLogin, setShowLogin] = useState(false);
     const handleCloseLogin = () => setShowLogin(false);
@@ -32,6 +33,7 @@ const TiketComp = (props) => {
     }
     let { data: stations } = useQuery("stationCache", async () => {
         const response = await API.get("/stations");
+        // console.log("stasiun ", response.data.data)
         return response.data.data;
     });
 
@@ -54,35 +56,27 @@ const TiketComp = (props) => {
         });
     };
 
-    let filtered = useQuery(["filteredCaches", filter], async () => {
-        const response = await API.get(`/ticket`);
+
+    let { data: rawTickets, refetch } = useQuery(["filteredCache", filterStatus], async () => {
+        const response = filterStatus ? (
+            await API.get(`/ticket/?start_station_id=${filter.startStation}&destination_station_id=${filter.DestinationStation}`)
+        ) : (
+            await API.get(`/tickets`));
+        console.log("ini log filter", response.data.data);
         return response.data.data;
     });
 
-    const { data: filteredTicket } = filtered
-
-    let { data: nonFiltered } = useQuery("tiketCache", async () => {
-        const response = await API.get(`/tickets`);
-        return response.data.data;
-    })
-    const handleFilter = () => {
-        if (filteredTicket?.length > 0) {
-            setTicket(filteredTicket)
-        } else {
-            setTicket(nonFiltered)
-        }
-    }
     const handleReset = () => {
+        setFilterStatus(false);
         setfilter({
             startStation: "",
             DestinationStation: "",
         })
     }
 
-
-    useEffect(() => {
-        handleFilter()
-    }, [filteredTicket, nonFiltered])
+    useEffect(() =>
+        setTicket(rawTickets)
+        , [rawTickets])
 
     return (
         <>
@@ -90,7 +84,6 @@ const TiketComp = (props) => {
             <Row className="mx-auto shadow rounded" style={{ width: "80%", marginTop: "-1.8rem", backgroundColor: "white" }}>
                 <Col sm="3" style={{ backgroundColor: "#F2F2F2", padding: "0", borderRadius: "10px 0 0 10px" }}>
                     <Container fluid className="my-3 d-flex align-items-center activeFormTicket bg-white">
-                        {/* <img src={Icon} alt="icon" style={{ objectFit: "cover", fontSize: "1.125rem" }} /> */}
                         <h4 className="mt-2 ms-2">Ticket Kereta Api</h4>
                     </Container>
                 </Col>
@@ -101,7 +94,7 @@ const TiketComp = (props) => {
                         <Row>
                             <Col>
                                 <h5>Asal</h5>
-                                <Form.Select className="mb-3" value={startStation} name="start_station" onChange={OnChangeHandler}>
+                                <Form.Select className="mb-3" value={startStation} name="startStation" onChange={OnChangeHandler}>
                                     <option hidden>Pilih disini</option>
                                     {stations?.map((item) => (
                                         <option key={item?.id} value={item?.id}>
@@ -117,7 +110,7 @@ const TiketComp = (props) => {
                                         </Form.Group>
                                     </Col>
                                     <Col>
-                                        <div>
+                                        <div className='d-flex'>
                                             <input id="PP" type="checkbox" style={{ transform: "scale(1.5)", marginRight: "1rem" }} />
                                             <label for="PP" className="h5">Pulang Pergi?</label>
                                         </div>
@@ -129,7 +122,7 @@ const TiketComp = (props) => {
                             </Col>
                             <Col>
                                 <h5>Tujuan</h5>
-                                <Form.Select className="mb-3" value={DestinationStation} name="destination" onChange={OnChangeHandler}>
+                                <Form.Select className="mb-3" value={DestinationStation} name="DestinationStation" onChange={OnChangeHandler}>
                                     <option hidden>pilih disini</option>
                                     {stations?.map((item) => (
                                         <option key={item?.id} value={item?.id}>
@@ -159,7 +152,8 @@ const TiketComp = (props) => {
                                         </Form.Select>
                                     </Col>
                                     <Col >
-                                        <Button className="mt-4 grad" onClick={handleReset}>Reset Filter</Button>
+                                        {/* <Button className="mt-4 grad" onClick={handleReset}>Reset Filter</Button> */}
+                                        <Button className="mt-4 grad" onClick={() => { setFilterStatus(true); refetch() }}>Cari Ticket</Button>
                                     </Col>
                                 </Row>
                             </Col>
@@ -174,26 +168,30 @@ const TiketComp = (props) => {
                     <Col md="1">Berangkat</Col>
                     <Col md="1"></Col>
                     <Col>Tiba</Col>
-                    <Col>Durasi</Col>
-                    <Col>Harga Per Orang</Col>
+                    <Col style={{ textAlign: "center" }}>Durasi</Col>
+                    <Col style={{ textAlign: "center" }}>Harga Per Orang</Col>
                 </Row>
 
 
-                {tickets?.map((ticket) =>
-                    <div key={ticket.id} onClick={state.isLogin ? (() => { setPrice(ticket.price); setTiketSelected(ticket.id); handleShowSuccess() }) : (handleShowLogin)} style={{ cursor: "pointer" ,boxShadow: "0px 0px 2px 2px rgba(0, 0, 0, 0.2)" }} className=''>
-                <ListTicket items={ticket} />
-            </div>
-                )}
+                {filterStatus !== true ? (tickets?.map((ticket) =>
+                    <div key={ticket.id} onClick={state.isLogin ? (() => { setPrice(ticket.price); setTiketSelected(ticket.id); handleShowSuccess() }) : (handleShowLogin)} style={{ cursor: "pointer" }}>
+                        <ListTicket items={ticket} />
+                    </div>
+                )) : tickets?.length === 0 ? (
+                    <h1 className="text-center my-5">Ticket tidak ditemukan</h1>
+                ) : (tickets?.map((ticket) =>
+                    <div key={ticket.id} onClick={state.isLogin ? (() => { setPrice(ticket.price); setTiketSelected(ticket.id); handleShowSuccess() }) : (handleShowLogin)} style={{ cursor: "pointer" }}>
+                        <ListTicket items={ticket} />
+                    </div>
+                ))}
 
 
-            <ModalComponent onShow={showSuccess} qty={filter.qty} price={price} id={ticketSelected} onHide={handleCloseSuccess} />
-            <Login show={showLogin} onHide={handleCloseLogin} onClick={handleShowRegister} />
+                <ModalComponent onShow={showSuccess} qty={filter.qty} price={price} id={ticketSelected} onHide={handleCloseSuccess} />
+                <Login show={showLogin} onHide={handleCloseLogin} onClick={handleShowRegister} />
 
 
-        </Container >
-        {/* {tickets?.map((ticket) => (
-                    
-                ))} */}
+            </Container >
+
         </>
     );
 }

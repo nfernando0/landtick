@@ -170,7 +170,30 @@ func (h *transactionsHandlers) GetPayment(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, dto.ErrorResult{Status: "Failed", Message: err.Error()})
 	}
 
-	return c.JSON(http.StatusOK, dto.SuccessResult{Status: "Success", Data: transaction})
+	// 1. Initiate Snap client
+	var s = snap.Client{}
+	s.New(os.Getenv("SERVER_KEY"), midtrans.Sandbox)
+	// Use to midtrans.Production if you want Production Environment (accept real transaction).
+
+	// 2. Initiate Snap request param
+	req := &snap.Request{
+		TransactionDetails: midtrans.TransactionDetails{
+			OrderID:  strconv.Itoa(transaction.ID),
+			GrossAmt: int64(transaction.Price),
+		},
+		CreditCard: &snap.CreditCardDetails{
+			Secure: true,
+		},
+		CustomerDetail: &midtrans.CustomerDetails{
+			FName: transaction.User.Fullname,
+			Email: transaction.User.Email,
+		},
+	}
+
+	// 3. Execute request create Snap transaction to Midtrans Snap API
+	snapResp, _ := s.CreateTransaction(req)
+
+	return c.JSON(http.StatusOK, dto.SuccessResult{Status: "Success", Data: snapResp})
 }
 
 // Notification

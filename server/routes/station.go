@@ -15,4 +15,5 @@ func StationRoute(e *echo.Group) {
 
 	e.GET("/stations", h.FindStation)
 	e.GET("/station/:id", middleware.Auth(h.GetStation))
+	e.POST("/station", middleware.Auth(h.CreateStation))
 }

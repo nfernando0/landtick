@@ -9,6 +9,7 @@ import (
 type StationRepository interface {
 	FindStation() ([]models.Station, error)
 	GetStation(ID int) (models.Station, error)
+	CreateStation(station models.Station) (models.Station, error)
 }
 
 func RepositoryStation(db *gorm.DB) *repository {
@@ -27,4 +28,10 @@ func (r *repository) GetStation(ID int) (models.Station, error) {
 	err := r.db.First(&train, ID).Error
 
 	return train, err
+}
+
+func (r *repository) CreateStation(station models.Station) (models.Station, error) {
+	err := r.db.Create(&station).Error
+
+	return station, err
 }

@@ -61,9 +61,16 @@ function NavbarComp() {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Link to="/addTicket" style={{ textDecoration: "none", marginLeft: "10px", display: "flex" }}>
+                                <Link to="/dashboard" style={{ textDecoration: "none", marginLeft: "10px", display: "flex" }}>
+                                    Dashboard
+                                </Link>
+                                <Link to="/addTicket" style={{ textDecoration: "none", marginLeft: "10px", display: "flex", marginTop: "10px" }}>
                                     Tambah Ticket
                                 </Link>
+                                <Link to="/station" style={{ textDecoration: "none", marginLeft: "10px", display: "flex", marginTop: "10px" }}>
+                                    Tambah Stasiun
+                                </Link>
+
                                 <Dropdown.Divider />
                                 <Dropdown.Item href="#" onClick={handleLogout}>
                                     <Link to={"/"} style={{ textDecoration: "none" }}>Logout</Link>

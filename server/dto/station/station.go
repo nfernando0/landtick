@@ -2,6 +2,7 @@ package stationdto
 
 type StationRequest struct {
 	Name string `json:"name" form:"name" gorm:"type: varchar(255)"`
+	Kota string `json:"kota" form:"kota" gorm:"type: varchar(255)"`
 }
 type UpdateStationRequest struct {
 	Name string `json:"name" form:"name" gorm:"type: varchar(255)"`
