@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Table } from 'react-bootstrap'
 import { useQuery } from 'react-query';
 import { FormatRupiah } from '@arismun/format-rupiah';
-import { API } from '../../config/api';
+import { API } from '../config/api';
 
 function ModalInvoice(props) {
 
