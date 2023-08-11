@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useMutation, useQuery } from 'react-query';
 import { FormatRupiah } from '@arismun/format-rupiah';
 import { API } from './config/api';
+import Right from '../assets/img/right.png'
 
 
 function PaymentComp(props) {
@@ -67,7 +68,7 @@ function PaymentComp(props) {
                     <Col md={8}>
 
                         <Card className='card-payment'>
-                            <img src="../src/assets/img/right.png" width='150' style={{ marginTop: '-5px' }} height='30' alt="" />
+                            <img src={Right} width='150' style={{ marginTop: '-5px' }} height='30' alt="" />
                             <Table striped>
                                 <thead>
                                     <tr>
