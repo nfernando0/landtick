@@ -3,6 +3,7 @@ import '../assets/css/Hero.css'
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FormatRupiah } from '@arismun/format-rupiah';
+import Arrow from '../assets/img/Arrow.svg'
 
 const ListTicket = ({ items }) => {
     return (
@@ -15,8 +16,7 @@ const ListTicket = ({ items }) => {
                 <p style={{ margin: "0" }}>{items?.start_time}</p>
                 <p style={{ color: "#d0d0d0" }}>{items?.start_station.name}</p>
             </div>
-            {/* <img src="../src/assets/img/Arrow.svg" alt="" /> */}
-            <img src="../src/assets/img/Arrow.svg" alt="" />
+            <img src={Arrow} alt="" />
             <div>
                 <p style={{ margin: "0" }}>{items?.arrival_time}</p>
                 <p style={{ color: "#d0d0d0" }}>{items?.destination.name}</p>
