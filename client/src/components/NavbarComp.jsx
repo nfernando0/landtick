@@ -6,6 +6,7 @@ import Register from '../pages/Auth/Register';
 import { UserContext } from '../Context/UserContext';
 import { Link } from 'react-router-dom';
 import Profile from '../assets/img/profile.png';
+import NavbarLogo from '../assets/img/logo.png'
 
 function NavbarComp() {
 
@@ -51,7 +52,7 @@ function NavbarComp() {
                 <Container>
                     <Navbar.Brand href="/" >
                         <span>LandTick</span>
-                        <img src="../src/assets/img/logo.png" width="45" height="45" alt="Logo" />
+                        <img src={NavbarLogo} width="45" height="45" alt="Logo" />
                     </Navbar.Brand>
                     {state.user.role === "admin" ? (
                         <Dropdown>
