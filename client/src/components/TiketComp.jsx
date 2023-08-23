@@ -50,7 +50,7 @@ const TiketComp = (props) => {
         qty: "1",
     })
 
-    const { startStation, DestinationStation, qty } = filter
+    // const { startStation, DestinationStation, qty } = filter
     const OnChangeHandler = (e) => {
         setfilter({
             ...filter,
@@ -61,10 +61,9 @@ const TiketComp = (props) => {
 
     let { data: rawTickets, refetch } = useQuery(["filteredCache", filterStatus], async () => {
         const response = filterStatus ? (
-            await API.get(`/ticket?start_station_id=${startStation}&destination_id=${DestinationStation}`)
+            await API.get(`/ticket/?start_station_id=${filter.startStation}&destination_id=${filter.DestinationStation}`)
         ) : (
             await API.get(`/tickets`));
-        console.log("ini log filter", response.data.data);
         return response.data.data;
     });
 
@@ -89,7 +88,7 @@ const TiketComp = (props) => {
                         <Row>
                             <Col>
                                 <h5>Asal</h5>
-                                <Form.Select className="mb-3" value={startStation} name="startStation" onChange={OnChangeHandler}>
+                                <Form.Select className="mb-3" value={filter.startStation} name="startStation" onChange={OnChangeHandler}>
                                     <option hidden>Pilih disini</option>
                                     {stations?.map((item) => (
                                         <option key={item?.id} value={item?.id}>
@@ -117,7 +116,7 @@ const TiketComp = (props) => {
                             </Col>
                             <Col>
                                 <h5>Tujuan</h5>
-                                <Form.Select className="mb-3" value={DestinationStation} name="DestinationStation" onChange={OnChangeHandler}>
+                                <Form.Select className="mb-3" value={filter.DestinationStation} name="DestinationStation" onChange={OnChangeHandler}>
                                     <option hidden>pilih disini</option>
                                     {stations?.map((item) => (
                                         <option key={item?.id} value={item?.id}>
@@ -128,7 +127,7 @@ const TiketComp = (props) => {
                                 <Row>
                                     <Col>
                                         <h5>Dewasa</h5>
-                                        <Form.Select className="mb-3" value={qty} name="qty" onChange={OnChangeHandler}>
+                                        <Form.Select className="mb-3" value={filter.qty} name="qty" onChange={OnChangeHandler}>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>

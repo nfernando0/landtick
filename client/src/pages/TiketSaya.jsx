@@ -17,7 +17,6 @@ function TiketSaya() {
 
     let { data: myTransactions } = useQuery("myTransactionsCaches", async () => {
         const response = await API.get("/transactionUser");
-        console.log("data", response.data.data)
         return response.data.data
     })
 

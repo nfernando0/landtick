@@ -24,7 +24,6 @@ const Register = ({ show, onHide }) => {
       e.preventDefault();
 
       const response = await API.post('/register', form);
-      console.log("Register Success", response);
 
 
       const alert = (

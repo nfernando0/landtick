@@ -8,5 +8,5 @@ type Transaction struct {
 	Ticket   TicketResponse      `json:"ticket" gorm:"foreignKey:TicketID"`
 	Qty      int                 `json:"qty"`
 	Price    int                 `json:"price"`
-	Status   string              `json:"status" gorm:"default:'pending'"`
+	Status   string              `json:"status" form:"status" gorm:"default:'pending'"`
 }

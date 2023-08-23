@@ -13,7 +13,6 @@ function Payment() {
 
   let { data: transactions } = useQuery("TicketsCachess", async () => {
     const response = await API.get(`/transaction/${i}`);
-    console.log("Response", i)
     return response.data.data
   })
 
